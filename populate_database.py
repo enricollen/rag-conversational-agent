@@ -6,9 +6,13 @@ from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema import Document
 from langchain_community.vectorstores import Chroma
+from dotenv import load_dotenv
+import os
 
-CHROMA_PATH = "chroma"
-DATA_PATH = "data"
+load_dotenv() 
+
+CHROMA_PATH = os.getenv('CHROMA_PATH')
+DATA_PATH = os.getenv('DATA_PATH')
 
 def main():
 

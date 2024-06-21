@@ -2,16 +2,22 @@ import argparse
 from flask import Flask, request, render_template, jsonify
 from llm import LLM
 from rag_retriever import RAGRetriever
+from dotenv import load_dotenv
+import os
 
-CHROMA_PATH = "chroma"
+load_dotenv() 
+
+CHROMA_PATH = os.getenv('CHROMA_PATH')
+LLM_MODEL_NAME = os.getenv('LLM_MODEL_NAME')
+EMBEDDING_MODEL_NAME = os.getenv('EMBEDDING_MODEL_NAME')
 
 app = Flask(__name__)
 
 # initialize the retriever
-retriever = RAGRetriever(chroma_path=CHROMA_PATH, embedding_model_name="ollama")
+retriever = RAGRetriever(chroma_path=CHROMA_PATH, embedding_model_name=EMBEDDING_MODEL_NAME)
 
 # choose the llm
-llm_model = LLM(model_name="llama3:8b")
+llm_model = LLM(model_name=LLM_MODEL_NAME)
 
 @app.route('/')
 def index():
@@ -27,7 +33,7 @@ def query():
     
     # Generate response from LLM
     llm_response = llm_model.generate_response(context=enhanced_context_text, question=query_text)
-    response_text = f"{llm_response}\n\n Sources: {sources}"
+    response_text = f"{llm_response}<br><br> Sources: {sources}"
 
     return jsonify(response=response_text)
 
