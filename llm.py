@@ -9,6 +9,7 @@ Basing only on the following context:
 ---
 
 Answer the following question: {question}
+Avoid to start the answer saying that you are basing on the provided context and go straight with the response.
 """
 
 class LLM:
