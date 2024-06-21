@@ -15,7 +15,12 @@ class RAGRetriever:
         return results
 
     def format_results(self, results: list[tuple[Document, float]]):
-        # format chunks together in context
         enhanced_context_text = "\n\n---\n\n".join([doc.page_content for doc, _score in results])
-        sources = [doc.metadata.get("id", None) for doc, _score in results]
-        return enhanced_context_text, sources
+        sources = set(self.format_source(doc.metadata) for doc, _score in results)  # set to ensure uniqueness
+        return enhanced_context_text, list(sources)
+
+    def format_source(self, metadata: dict):
+        source = metadata.get("source", "unknown")
+        page = metadata.get("page", "unknown")
+        filename = source.split("\\")[-1]  # extract filename
+        return f"{filename} page {page}"

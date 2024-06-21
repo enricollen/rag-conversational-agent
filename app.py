@@ -34,7 +34,8 @@ def query():
     
     # Generate response from LLM
     llm_response = llm_model.generate_response(context=enhanced_context_text, question=query_text)
-    response_text = f"{llm_response}<br><br> Sources: {sources}"
+    sources_html = "<br>".join(sources) 
+    response_text = f"{llm_response}<br><br>Sources:<br>{sources_html}"
 
     return jsonify(response=response_text)
 
