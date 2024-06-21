@@ -1,0 +1,6 @@
+pypdf
+langchain
+chromadb # vector db
+pytest
+boto3
+langchain_community

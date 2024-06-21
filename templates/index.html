@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Bot</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #chat {
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+            height: 400px;
+            overflow-y: scroll;
+        }
+        .message {
+            margin: 10px 0;
+        }
+        .bot {
+            color: blue;
+        }
+        .user {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chat with Documents</h1>
+    <div id="chat"></div>
+    <input type="text" id="query" placeholder="Type your question here..." style="width: 80%;">
+    <button onclick="sendQuery()">Send</button>
+
+    <script>
+        function sendQuery() {
+            const queryText = $('#query').val();
+            $('#query').val('');
+            $('#chat').append('<div class="message user">You: ' + queryText + '</div>');
+            $.ajax({
+                url: '/query',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ query_text: queryText }),
+                success: function(response) {
+                    $('#chat').append('<div class="message bot">Bot: ' + response.response + '</div>');
+                    $('#chat').scrollTop($('#chat')[0].scrollHeight);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
