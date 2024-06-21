@@ -10,6 +10,7 @@ load_dotenv()
 CHROMA_PATH = os.getenv('CHROMA_PATH')
 LLM_MODEL_NAME = os.getenv('LLM_MODEL_NAME')
 EMBEDDING_MODEL_NAME = os.getenv('EMBEDDING_MODEL_NAME')
+NUM_RELEVANT_DOCS = int(os.getenv('NUM_RELEVANT_DOCS'))
 
 app = Flask(__name__)
 
@@ -28,7 +29,7 @@ def query():
     query_text = request.json['query_text']
 
     # Retrieve and format results
-    results = retriever.query(query_text, k=4)
+    results = retriever.query(query_text, k=NUM_RELEVANT_DOCS)
     enhanced_context_text, sources = retriever.format_results(results)
     
     # Generate response from LLM
