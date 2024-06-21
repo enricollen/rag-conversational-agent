@@ -1,0 +1,21 @@
+from langchain_community.vectorstores import Chroma
+from langchain.schema import Document
+from embeddings import Embeddings
+
+class RAGRetriever:
+    def __init__(self, chroma_path: str, embedding_model_name: str):
+        self.chroma_path = chroma_path
+        embeddings = Embeddings(model_name=embedding_model_name)
+        self.embedding_function = embeddings.get_embedding_function()
+        self.db = Chroma(persist_directory=self.chroma_path, embedding_function=self.embedding_function)
+
+    def query(self, query_text: str, k: int = 4):
+        # compute similarity between embeddings of query and of pdf text chunks
+        results = self.db.similarity_search_with_score(query_text, k=k)
+        return results
+
+    def format_results(self, results: list[tuple[Document, float]]):
+        # format chunks together in context
+        enhanced_context_text = "\n\n---\n\n".join([doc.page_content for doc, _score in results])
+        sources = [doc.metadata.get("id", None) for doc, _score in results]
+        return enhanced_context_text, sources
