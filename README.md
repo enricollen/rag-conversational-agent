@@ -52,14 +52,19 @@ For this project, i exploited the following components to build the RAG architec
 
 5. **Insert you own PDFs in /data folder**
 
-6. **Run the application:**
+6. **Run once the populate_database script to index the pdf files into the vector db:**
+    ```sh
+    python populate_database.py
+    ```
+
+7. **Run the application:**
     ```sh
     python app.py
     ```
 
-6. **Navigate to `http://localhost:5000/`**
+8. **Navigate to `http://localhost:5000/`**
 
-7. **Perform a query** 
+9. **Perform a query** 
 
 ## 🚀 Future Improvements
 Here are some ideas for future improvements:
