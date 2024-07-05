@@ -1,11 +1,11 @@
 from langchain_community.vectorstores import Chroma
 from langchain.schema import Document
-from embeddings import Embeddings
+from embeddings.embeddings import Embeddings
 
 class RAGRetriever:
-    def __init__(self, chroma_path: str, embedding_model_name: str):
+    def __init__(self, chroma_path: str, embedding_model_name: str, api_key: str):
         self.chroma_path = chroma_path
-        embeddings = Embeddings(model_name=embedding_model_name)
+        embeddings = Embeddings(model_name=embedding_model_name, api_key=api_key)
         self.embedding_function = embeddings.get_embedding_function()
         self.db = Chroma(persist_directory=self.chroma_path, embedding_function=self.embedding_function)
 
