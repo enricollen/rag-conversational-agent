@@ -1,7 +1,7 @@
 import argparse
 import os
 import shutil
-from embeddings import Embeddings
+from embeddings.embeddings import Embeddings
 from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema import Document
@@ -13,13 +13,14 @@ load_dotenv()
 
 CHROMA_PATH = os.getenv('CHROMA_PATH')
 DATA_PATH = os.getenv('DATA_PATH')
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
 def main():
 
     # check whether the database should be cleared or not (using the --clear flag)
     parser = argparse.ArgumentParser()
     parser.add_argument("--reset", action="store_true", help="Reset the database.")
-    parser.add_argument("--embedding-model", type=str, default="ollama", help="The embedding model to use (ollama or bedrock).")
+    parser.add_argument("--embedding-model", type=str, default="openai", help="The embedding model to use (ollama or openai).")
     args = parser.parse_args()
 
     if args.reset:
@@ -27,7 +28,7 @@ def main():
         clear_database()
 
     # choose the embedding model
-    embeddings = Embeddings(model_name=args.embedding_model)
+    embeddings = Embeddings(model_name=args.embedding_model, api_key=OPENAI_API_KEY)
     embedding_function = embeddings.get_embedding_function()
 
     # load the existing database
@@ -69,14 +70,14 @@ def add_to_chroma(chunks: list[Document], db):
             new_chunks.append(chunk)
 
     if len(new_chunks):
-        print(f"👉 Adding new documents: {len(new_chunks)}")
+        print(f"➕ Adding new documents: {len(new_chunks)}")
         new_chunk_ids = [chunk.metadata["id"] for chunk in new_chunks]
         db.add_documents(new_chunks, ids=new_chunk_ids)
     else:
         print("✅ No new documents to add")
 
 def calculate_chunk_ids(chunks):
-    # create IDs like "data/monopoly.pdf:6:2"
+    # create IDs like "data/alpha_society.pdf:6:2"
     # Page Source : Page Number : Chunk Index
     last_page_id = None
     current_chunk_index = 0
