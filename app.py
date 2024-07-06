@@ -1,4 +1,3 @@
-import argparse
 from flask import Flask, request, render_template, jsonify
 from llm.llm_factory import LLMFactory
 from retrieval.rag_retriever import RAGRetriever
