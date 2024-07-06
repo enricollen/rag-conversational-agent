@@ -70,6 +70,7 @@ For this project, i exploited the following components to build the RAG architec
 Here are some ideas for future improvements:
 - [x] Add OpenAI LLM GPT models compatibility (3.5 turbo, 4, 4-o)
 - [x] Add unit testing to validate the responses given by the LLM
+- [ ] Add an admin user interface in web UI to choose interactively the parameters like LLMs, embedding models etc.
 - [ ] Add web scraping in case none of the personal documents contain relevant info w.r.t. the query
 
 ## 📹 Demo Video
