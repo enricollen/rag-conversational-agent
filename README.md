@@ -26,12 +26,22 @@ For this project, i exploited the following components to build the RAG architec
 4. **LangChain**: A framework for integrating language models and retrieval systems.
 
 ## 🛠️ Setup and Local Deployment
-1. **Download and install Ollama on your PC**:
+
+1. **Choose Your Setup**:
+   - You have two options for setting up the LLMs: local setup using Ollama or using the OpenAI API for GPT models.
+
+### Option 1: Local Setup with Ollama
+
+- **Download and install Ollama on your PC**:
    - Visit [Ollama's official website](https://ollama.com/download) to download and install Ollama. Ensure you have sufficient hardware resources to run the local language model.
    - Pull a LMM of your choice:
    ```sh
-    ollama pull <model_name>  # e.g. ollama pull llama3:8b
-    ```
+   ollama pull <model_name>  # e.g. ollama pull llama3:8b
+
+### Option 2: Use OpenAI API for GPT Models
+- **Set up OpenAI API**: you can sign up and get your API key from [OpenAI's website](https://openai.com/api/).
+
+## Common Steps
 
 2. **Clone the repository and navigate to the project directory**:
     ```sh
@@ -64,13 +74,16 @@ For this project, i exploited the following components to build the RAG architec
 
 8. **Navigate to `http://localhost:5000/`**
 
-9. **Perform a query** 
+9. **If needed, click on ⚙️ icon to access the admin panel and adjust app parameters**
+
+10. **Perform a query** 
 
 ## 🚀 Future Improvements
 Here are some ideas for future improvements:
 - [x] Add OpenAI LLM GPT models compatibility (3.5 turbo, 4, 4-o)
 - [x] Add unit testing to validate the responses given by the LLM
-- [ ] Add an admin user interface in web UI to choose interactively the parameters like LLMs, embedding models etc.
+- [x] Add an admin user interface in web UI to choose interactively the parameters like LLMs, embedding models etc.
+- [ ] Add Langchain Tools compatibility, allowing users to define custom Python functions that can be utilized by the LLMs.
 - [ ] Add web scraping in case none of the personal documents contain relevant info w.r.t. the query
 
 ## 📹 Demo Video
