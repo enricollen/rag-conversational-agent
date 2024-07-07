@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚙️ Admin Settings</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <h1>⚙️ Admin Settings</h1>
+    <form action="{{ url_for('update_settings') }}" method="POST">
+        <div id="admin-container">
+            <label for="llm_model_type">LLM Model Type:</label>
+            <input type="text" id="llm_model_type" name="llm_model_type" value="{{ llm_model_type }}"><br>
+
+            <label for="llm_model_name">LLM Model Name:</label>
+            <input type="text" id="llm_model_name" name="llm_model_name" value="{{ llm_model_name }}"><br>
+
+            <label for="embedding_model_name">Embedding Model Name:</label>
+            <input type="text" id="embedding_model_name" name="embedding_model_name" value="{{ embedding_model_name }}"><br>
+
+            <label for="num_relevant_docs">Number of Relevant Docs:</label>
+            <input type="number" id="num_relevant_docs" name="num_relevant_docs" value="{{ num_relevant_docs }}"><br>
+
+            <label for="openai_api_key">OpenAI API Key:</label>
+            <input type="text" id="openai_api_key" name="openai_api_key" value="{{ openai_api_key }}"><br>
+
+            <button type="submit">Update Settings</button>
+        </div>
+    </form>
+    <a href="{{ url_for('index') }}">🔙 Go to Chat</a>
+</body>
+</html>

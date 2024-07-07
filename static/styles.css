@@ -11,6 +11,26 @@ body {
     height: 100vh;
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    align-items: center;
+    margin-bottom: 20px; 
+}
+
+.settings-link {
+    font-size: 24px;
+    text-decoration: none;
+    color: #333;
+    margin-left: auto; 
+}
+
+.settings-link:hover {
+    color: #007BFF;
+}
+
 #chat-container {
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -71,4 +91,54 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+h1 {
+    color: #333;
+}
+
+label {
+    font-weight: bold;
+}
+
+#admin-container {
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#admin-container label,
+#admin-container input {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 600px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+a {
+    display: block;
+    margin-top: 10px;
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.admin-link {
+    display: block;
+    margin-top: 20px;
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+}
+
+.admin-link:hover {
+    text-decoration: underline;
 }
