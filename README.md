@@ -1,5 +1,7 @@
 A simple local Retrieval-Augmented Generation (RAG) chatbot that can answer to questions by acquiring information from personal pdf documents.
 
+(please, if you find this content useful please consider leaving a star ⭐)
+
 ##  What is Retrieval-Augmented Generation (RAG)?
 <div style="text-align: center;">
 <img src="https://miro.medium.com/v2/resize:fit:1400/1*J7vyY3EjY46AlduMvr9FbQ.png" alt="rag_pipeline" width="600" height="300">
@@ -94,5 +96,3 @@ The demo was run on my PC with the following specifications:
 - **Processor**: Intel(R) Core(TM) i7-14700K 3.40 GHz
 - **RAM**: 32.0 GB
 - **GPU**: NVIDIA GeForce RTX 3090 FE 24 GB
-
-If you find this content useful please consider leaving a star ⭐
