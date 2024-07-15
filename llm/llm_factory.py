@@ -1,4 +1,4 @@
-from llm.llm import LLM, GPTModel, OllamaModel
+from llm.llm import LLM, GPTModel, OllamaModel, AnthropicModel
 
 class LLMFactory:
     @staticmethod
@@ -7,5 +7,7 @@ class LLMFactory:
             return OllamaModel(model_name)
         elif model_type == 'gpt':
             return GPTModel(model_name, api_key)
+        elif model_type == 'claude':
+            return AnthropicModel(model_name, api_key)
         else:
             raise ValueError(f"Unsupported model type: {model_type}")

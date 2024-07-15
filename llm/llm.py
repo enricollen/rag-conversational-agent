@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from langchain_community.llms.ollama import Ollama
 from openai import OpenAI
 from langchain.prompts import ChatPromptTemplate
+import anthropic
 
 PROMPT_TEMPLATE = """
 Basing only on the following context:
@@ -55,3 +56,31 @@ class GPTModel(LLM):
             temperature=0.7,
         )
         return response.choices[0].message.content.strip()
+    
+class AnthropicModel(LLM):
+    def __init__(self, model_name: str, api_key: str):
+        super().__init__(model_name)
+        self.client = anthropic.Anthropic(api_key=api_key)
+
+    def invoke(self, prompt: str) -> str:
+        messages = [
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": prompt
+                    }
+                ]
+            }
+        ]
+        response = self.client.messages.create(
+            model=self.model_name,
+            max_tokens=1000,
+            temperature=0.7,
+            messages=messages
+        )
+        # Extract the plain text from the response content
+        text_blocks = response.content
+        plain_text = "\n".join(block.text for block in text_blocks if block.type == 'text')
+        return plain_text
