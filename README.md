@@ -1,5 +1,7 @@
 A simple local Retrieval-Augmented Generation (RAG) chatbot that can answer to questions by acquiring information from personal pdf documents.
 
+(please, if you find this content useful please consider leaving a star ⭐)
+
 ##  What is Retrieval-Augmented Generation (RAG)?
 <div style="text-align: center;">
 <img src="https://miro.medium.com/v2/resize:fit:1400/1*J7vyY3EjY46AlduMvr9FbQ.png" alt="rag_pipeline" width="600" height="300">
@@ -26,12 +28,22 @@ For this project, i exploited the following components to build the RAG architec
 4. **LangChain**: A framework for integrating language models and retrieval systems.
 
 ## 🛠️ Setup and Local Deployment
-1. **Download and install Ollama on your PC**:
+
+1. **Choose Your Setup**:
+   - You have two options for setting up the LLMs: local setup using Ollama or using the OpenAI API for GPT models.
+
+### Option 1: Local Setup with Ollama
+
+- **Download and install Ollama on your PC**:
    - Visit [Ollama's official website](https://ollama.com/download) to download and install Ollama. Ensure you have sufficient hardware resources to run the local language model.
    - Pull a LMM of your choice:
    ```sh
-    ollama pull <model_name>  # e.g. ollama pull llama3:8b
-    ```
+   ollama pull <model_name>  # e.g. ollama pull llama3:8b
+
+### Option 2: Use OpenAI API for GPT Models
+- **Set up OpenAI API**: you can sign up and get your API key from [OpenAI's website](https://openai.com/api/).
+
+## Common Steps
 
 2. **Clone the repository and navigate to the project directory**:
     ```sh
@@ -64,13 +76,16 @@ For this project, i exploited the following components to build the RAG architec
 
 8. **Navigate to `http://localhost:5000/`**
 
-9. **Perform a query** 
+9. **If needed, click on ⚙️ icon to access the admin panel and adjust app parameters**
+
+10. **Perform a query** 
 
 ## 🚀 Future Improvements
 Here are some ideas for future improvements:
 - [x] Add OpenAI LLM GPT models compatibility (3.5 turbo, 4, 4-o)
 - [x] Add unit testing to validate the responses given by the LLM
-- [ ] Add an admin user interface in web UI to choose interactively the parameters like LLMs, embedding models etc.
+- [x] Add an admin user interface in web UI to choose interactively the parameters like LLMs, embedding models etc.
+- [ ] Add Langchain Tools compatibility, allowing users to define custom Python functions that can be utilized by the LLMs.
 - [ ] Add web scraping in case none of the personal documents contain relevant info w.r.t. the query
 
 ## 📹 Demo Video
@@ -81,5 +96,3 @@ The demo was run on my PC with the following specifications:
 - **Processor**: Intel(R) Core(TM) i7-14700K 3.40 GHz
 - **RAM**: 32.0 GB
 - **GPU**: NVIDIA GeForce RTX 3090 FE 24 GB
-
-If you find this content useful please consider leaving a star ⭐
