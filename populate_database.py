@@ -7,16 +7,15 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema import Document
 from langchain_community.vectorstores import Chroma
 from dotenv import load_dotenv
-import os
 
-load_dotenv() 
+load_dotenv()
 
-CHROMA_PATH = os.getenv('CHROMA_PATH')
-DATA_PATH = os.getenv('DATA_PATH')
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+DATA_PATH = os.getenv('DATA_PATH')
+VECTOR_DB_OPENAI_PATH = os.getenv('VECTOR_DB_OPENAI_PATH')
+VECTOR_DB_OLLAMA_PATH = os.getenv('VECTOR_DB_OLLAMA_PATH')
 
 def main():
-
     # check whether the database should be cleared or not (using the --clear flag)
     parser = argparse.ArgumentParser()
     parser.add_argument("--reset", action="store_true", help="Reset the database.")
@@ -25,15 +24,23 @@ def main():
 
     if args.reset:
         print("✨ Rebuilding Database using " + str(args.embedding_model) + " embedding model")
-        clear_database()
+        clear_database(args.embedding_model)
 
     # choose the embedding model
     embeddings = Embeddings(model_name=args.embedding_model, api_key=OPENAI_API_KEY)
     embedding_function = embeddings.get_embedding_function()
 
+    # determine the correct path for the database based on the embedding model
+    if args.embedding_model == "openai":
+        db_path = VECTOR_DB_OPENAI_PATH
+    elif args.embedding_model == "ollama":
+        db_path = VECTOR_DB_OLLAMA_PATH
+    else:
+        raise ValueError("Unsupported embedding model specified.")
+
     # load the existing database
     db = Chroma(
-        persist_directory=CHROMA_PATH, embedding_function=embedding_function
+        persist_directory=db_path, embedding_function=embedding_function
     )
 
     # create (or update) the data store
@@ -102,9 +109,16 @@ def calculate_chunk_ids(chunks):
 
     return chunks
 
-def clear_database():
-    if os.path.exists(CHROMA_PATH):
-        shutil.rmtree(CHROMA_PATH)
+def clear_database(embedding_model):
+    if embedding_model == "openai":
+        db_path = VECTOR_DB_OPENAI_PATH
+    elif embedding_model == "ollama":
+        db_path = VECTOR_DB_OLLAMA_PATH
+    else:
+        raise ValueError("Unsupported embedding model specified.")
+
+    if os.path.exists(db_path):
+        shutil.rmtree(db_path)
 
 if __name__ == "__main__":
     main()
