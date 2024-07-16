@@ -98,7 +98,7 @@ Here are some ideas for future improvements:
 ## 📹 Demo Video
 Watch the demo video below to see the RAG Chatbot in action:
 
-[![YT Video](https://img.youtube.com/vi/Khjp7j-0qVQ/0.jpg)](https://www.youtube.com/watch?v=Khjp7j-0qVQ)
+[![YT Video](https://img.youtube.com/vi/_JVt5gwwZq0/0.jpg)](https://www.youtube.com/watch?v=_JVt5gwwZq0)
 
 The demo was run on my PC with the following specifications:
 - **Processor**: Intel(R) Core(TM) i7-14700K 3.40 GHz
