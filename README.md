@@ -30,7 +30,10 @@ For this project, i exploited the following components to build the RAG architec
 ## 🛠️ Setup and Local Deployment
 
 1. **Choose Your Setup**:
-   - You have two options for setting up the LLMs: local setup using Ollama or using the OpenAI API for GPT models.
+   - You have three different options for setting up the LLMs:
+     1. Local setup using Ollama.
+     2. Using the OpenAI API for GPT models.
+     3. Using the Anthropic API for Claude models.
 
 ### Option 1: Local Setup with Ollama
 
@@ -42,6 +45,9 @@ For this project, i exploited the following components to build the RAG architec
 
 ### Option 2: Use OpenAI API for GPT Models
 - **Set up OpenAI API**: you can sign up and get your API key from [OpenAI's website](https://openai.com/api/).
+
+### Option 3: Use Anthropic API for Claude Models
+- **Set up Anthropic API**: you can sign up and get your API key from [Anthropic's website](https://www.anthropic.com/api).
 
 ## Common Steps
 
@@ -83,6 +89,7 @@ For this project, i exploited the following components to build the RAG architec
 ## 🚀 Future Improvements
 Here are some ideas for future improvements:
 - [x] Add OpenAI LLM GPT models compatibility (3.5 turbo, 4, 4-o)
+- [x] Add Anthropic Claude LLM models compatibility (Claude 3.5 Sonnet, Claude 3 Sonnet, Claude 3 Opus, Claude 3 Haiku)
 - [x] Add unit testing to validate the responses given by the LLM
 - [x] Add an admin user interface in web UI to choose interactively the parameters like LLMs, embedding models etc.
 - [ ] Add Langchain Tools compatibility, allowing users to define custom Python functions that can be utilized by the LLMs.
@@ -90,6 +97,7 @@ Here are some ideas for future improvements:
 
 ## 📹 Demo Video
 Watch the demo video below to see the RAG Chatbot in action:
+
 [![YT Video](https://img.youtube.com/vi/Khjp7j-0qVQ/0.jpg)](https://www.youtube.com/watch?v=Khjp7j-0qVQ)
 
 The demo was run on my PC with the following specifications:
