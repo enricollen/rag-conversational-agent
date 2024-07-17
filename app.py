@@ -9,7 +9,7 @@ load_dotenv()
 VECTOR_DB_OPENAI_PATH = os.getenv('VECTOR_DB_OPENAI_PATH')
 VECTOR_DB_OLLAMA_PATH = os.getenv('VECTOR_DB_OLLAMA_PATH')
 LLM_MODEL_NAME = os.getenv('LLM_MODEL_NAME') # 'gpt-3.5-turbo', 'GPT-4o' or local LLM like 'llama3:8b', 'gemma2', 'mistral:7b' etc.
-LLM_MODEL_TYPE = os.getenv('LLM_MODEL_TYPE')  # 'ollama' or 'gpt'
+LLM_MODEL_TYPE = os.getenv('LLM_MODEL_TYPE')  # 'ollama', 'gpt' or 'claude'
 EMBEDDING_MODEL_NAME = os.getenv('EMBEDDING_MODEL_NAME') # 'ollama' or 'openai'
 NUM_RELEVANT_DOCS = int(os.getenv('NUM_RELEVANT_DOCS'))
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
