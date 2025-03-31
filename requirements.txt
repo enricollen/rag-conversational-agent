@@ -5,3 +5,4 @@ pytest
 boto3
 langchain_community
 anthropic
+langchain-chroma
