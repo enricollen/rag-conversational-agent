@@ -98,9 +98,20 @@ function handleFormSubmission(event) {
     const llmModelNameOther = document.getElementById('llm_model_name_other');
     const embeddingModelName = document.getElementById('embedding_model_name');
 
-    // If "Other" is selected, set the value to the text input value
+    // If "Other" is selected, create a hidden input with the custom model name
     if (llmModelName.value === 'other') {
-        llmModelName.value = llmModelNameOther.value;
+        const customModelName = llmModelNameOther.value;
+        if (!customModelName) {
+            event.preventDefault();
+            alert('Please enter a model name when selecting "Other"');
+            return;
+        }
+        // Create a hidden input with the custom model name
+        const hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.name = 'llm_model_name';
+        hiddenInput.value = customModelName;
+        event.target.appendChild(hiddenInput);
     }
 
     // Enable embedding_model_name so its value can be submitted
