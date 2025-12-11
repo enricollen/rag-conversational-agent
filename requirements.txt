@@ -1,8 +1,13 @@
 pypdf
-langchain
+langchain==1.1.3
+langchain-core==1.1.3
+langchain-community==0.4.1
+langchain-chroma==1.0.0
+langchain-text-splitters==1.0.0
+numpy<2.0.0
 chromadb # vector db
 pytest
 boto3
-langchain_community
 anthropic
-langchain-chroma
+openai
+python-dotenv

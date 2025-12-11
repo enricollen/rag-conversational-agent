@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from langchain_community.llms.ollama import Ollama
 from openai import OpenAI
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 import anthropic
 
 PROMPT_TEMPLATE = """
