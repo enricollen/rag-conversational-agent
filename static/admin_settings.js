@@ -35,13 +35,12 @@ function updateLlmModelNames() {
 
     if (llmModelType === 'gpt') {
         options = [
-            { text: 'GPT 3.5', value: 'gpt-3.5-turbo' },
-            { text: 'GPT-4o', value: 'gpt-4o' },
-            { text: 'GPT-4', value: 'gpt-4' }
+            { text: 'GPT 4.1', value: 'gpt-4.1' },
+            { text: 'GPT-4o', value: 'gpt-4o' }
         ];
     } else if (llmModelType === 'ollama') {
         options = [
-            { text: 'Llama3', value: 'llama3:8b' },
+            { text: 'Llama3', value: 'llama3.1:8b' },
             { text: 'Gemma 2', value: 'gemma2' },
             { text: 'Mistral', value: 'mistral:7b' },
             { text: 'Other', value: 'other' }
