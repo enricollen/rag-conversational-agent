@@ -81,6 +81,11 @@ For this project, i exploited the following components to build the RAG architec
     ```
 
 8. **Navigate to `http://localhost:5000/`**
+# HTTPS Deployment Note
+
+The application runs over HTTP by default, which is suitable for local development. If the web interface is exposed publicly, HTTPS is recommended to avoid transmitting documents, queries, or API requests in plaintext.
+
+For small-scale or experimental deployments, a free reverse proxy such as Ngrok    can be used to provide HTTPS without modifying the application code. For more stable or long-term deployments, a standard web server (for example, Nginx with TLS) is recommended.
 
 9. **If needed, click on ⚙️ icon to access the admin panel and adjust app parameters**
 
